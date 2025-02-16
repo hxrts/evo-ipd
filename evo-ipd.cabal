@@ -1,0 +1,42 @@
+cabal-version:      3.0
+name:               evo-ipd
+version:            0.1.0.0
+synopsis:           Evolutionary Iterated Prisoner's Dilemma
+description:        Implementation of Robert Axelrod's Iterated Prisoner's Dilemma tournament
+license:            MIT
+author:             hxrts
+maintainer:         hxrts
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+    default-extensions:
+        DeriveGeneric
+        OverloadedStrings
+        RecordWildCards
+
+library
+    import:           warnings
+    exposed-modules:  
+        IPD.Types
+        IPD.Strategies
+        IPD.Tournament
+        IPD.Evolution
+    build-depends:    
+        base ^>=4.18.1.0,
+        random ^>=1.2.1,
+        containers ^>=0.6.7,
+        text ^>=2.0
+    hs-source-dirs:   src
+    default-language: GHC2021
+
+executable evo-ipd
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    
+        base ^>=4.18.1.0,
+        evo-ipd,
+        random ^>=1.2.1,
+        text ^>=2.0
+    hs-source-dirs:   app
+    default-language: GHC2021
